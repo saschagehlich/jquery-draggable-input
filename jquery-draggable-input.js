@@ -57,7 +57,7 @@ $(function() {
             if(options.type === 'float')
               newValue = newValue.toFixed(options.precision);
 
-            $el.val(newValue);
+            $el.val(newValue).trigger('change');
           };
 
           $(document).mousemove(onMouseMove);
