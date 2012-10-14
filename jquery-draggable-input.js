@@ -42,8 +42,6 @@ $(function() {
 
         $(this).mousedown(function(e) {
 
-          e.preventDefault();
-
           var initialPos = { x: e.pageX, y: e.pageY };
 
           var onMouseMove = function(e) {
