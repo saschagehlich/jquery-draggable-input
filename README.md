@@ -14,6 +14,10 @@ jQuery Draggable Input
 	});
 ```
 
+## Examples
+
+[See it in action here](http://saschagehlich.github.com/jquery-draggable-input/)
+
 ## License
 
 Copyright © 2012 Sascha Gehlich, licensed under the [MIT License](https://github.com/saschagehlich/jquery-draggable-input/master/LICENSE.txt).
