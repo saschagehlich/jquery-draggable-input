@@ -76,12 +76,15 @@ $(function() {
         });
 
         $(this).blur(function(e){
-          var newValue = checkBoundaries($(this).val());
+          var currentValue = $(this).val();
+          var newValue = checkBoundaries(currentValue);
 
           newValue = checkPrecision(newValue);
 
-          $(this).val(newValue);
-        });
+          if(currentValue != newValue){
+            $(this).val(newValue).trigger('change');
+          }
+        });
 
       });
     }
