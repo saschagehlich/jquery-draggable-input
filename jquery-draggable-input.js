@@ -40,6 +40,16 @@ $(function() {
         var max = parse(options.max);
         var min = parse(options.min);
 
+        var checkBoundaries = function(newValue){
+          return parse( Math.min( max, Math.max( min, newValue ) ) );
+        };
+
+        var checkPrecision = function(newValue){
+          if(options.type === 'float')
+            newValue = newValue.toFixed(options.precision);
+          return newValue;
+        };
+
         $(this).mousedown(function(e) {
 
           var initialPos = { x: e.pageX, y: e.pageY };
@@ -49,12 +59,11 @@ $(function() {
             var newValue = value - diffPos.y * scrollPrecision;
 
             // Boundaries
-            newValue = parse( Math.min( max, Math.max( min, newValue ) ) );
+            newValue = checkBoundaries(newValue);
 
             // Decimal precision
-            if(options.type === 'float')
-              newValue = newValue.toFixed(options.precision);
-
+            newValue = checkPrecision(newValue);
+            
             $el.val(newValue).trigger('change');
           };
 
@@ -65,6 +74,15 @@ $(function() {
           });
 
         });
+
+        $(this).blur(function(e){
+          var newValue = checkBoundaries($(this).val());
+
+          newValue = checkPrecision(newValue);
+
+          $(this).val(newValue);
+        });
+
       });
     }
 
